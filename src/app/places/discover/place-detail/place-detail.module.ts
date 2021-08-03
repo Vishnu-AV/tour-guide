@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PlaceDetailPageRoutingModule } from './place-detail-routing.module';
 
 import { PlaceDetailPage } from './place-detail.page';
+import { CrateBookingComponent } from 'src/app/bookings/crate-booking/crate-booking.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { PlaceDetailPage } from './place-detail.page';
     IonicModule,
     PlaceDetailPageRoutingModule
   ],
-  declarations: [PlaceDetailPage]
+  declarations: [PlaceDetailPage, CrateBookingComponent],
+  entryComponents: [CrateBookingComponent]
 })
 export class PlaceDetailPageModule {}
