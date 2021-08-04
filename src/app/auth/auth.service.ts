@@ -12,7 +12,7 @@ export class AuthService {
   }
 
   constructor(private router: Router) {
-    this.userAuthenticated = false;
+    this.userAuthenticated = true;
   }
   login() {
     this.userAuthenticated = true;
