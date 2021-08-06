@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { take, map, tap, delay, switchMap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { PlaceLocation } from '../model/location.model';
 import { Place } from '../model/place.model';
 
 interface PlaceData {
@@ -13,6 +14,7 @@ interface PlaceData {
   price: number;
   title: string;
   userId: string;
+  location: PlaceLocation;
 }
 
 @Injectable({
@@ -44,7 +46,8 @@ export class PlacesService {
                 resData[key].price,
                 new Date(resData[key].availableFrom),
                 new Date(resData[key].availableTo),
-                resData[key].userId
+                resData[key].userId,
+                resData[key].location
               )
             );
           }
@@ -73,13 +76,14 @@ export class PlacesService {
             placeData.price,
             new Date(placeData.availableFrom),
             new Date(placeData.availableTo),
-            placeData.userId
+            placeData.userId,
+            placeData.location
           );
         })
       );
   }
 
-  addPlace(title: string, description: string, price: number, dateFrom: Date, dateTo: Date) {
+  addPlace(title: string, description: string, price: number, dateFrom: Date, dateTo: Date, locData: PlaceLocation) {
     let generatedId: string;
     const newPlace: Place = {
       id: Math.random().toString(),
@@ -89,7 +93,8 @@ export class PlacesService {
       price: Number(price),
       availableFrom: dateFrom,
       availableTo: dateTo,
-      userId: this.authService.userId
+      userId: this.authService.userId,
+      location: locData
     };
     return this.http.post<{ name: string }>('https://ionic-angular-course-edcc2-default-rtdb.firebaseio.com/offered-place.json',
       { ...newPlace, id: null })
@@ -129,7 +134,8 @@ export class PlacesService {
           oldPlace.price,
           oldPlace.availableFrom,
           oldPlace.availableTo,
-          oldPlace.userId
+          oldPlace.userId,
+          oldPlace.location
         );
         return this.http.put(
           `https://ionic-angular-course-edcc2-default-rtdb.firebaseio.com/offered-place/${placeId}.json`,
