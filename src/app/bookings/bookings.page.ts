@@ -59,6 +59,10 @@ export class BookingsPage implements OnInit, OnDestroy {
     });
   }
 
+  selectChange(e) {
+    console.log(e);
+  }
+
   ngOnDestroy() {
     if (this.bookingSub) {
       this.bookingSub.unsubscribe();
