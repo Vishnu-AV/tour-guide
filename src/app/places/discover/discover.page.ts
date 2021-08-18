@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import { MenuController } from '@ionic/angular';
 import { SegmentChangeEventDetail } from '@ionic/core';
 import { Subscription } from 'rxjs';
@@ -20,7 +21,8 @@ export class DiscoverPage implements OnInit, OnDestroy {
   constructor(
     private placesService: PlacesService,
     private menuCtrl: MenuController,
-    private authService: AuthService
+    private authService: AuthService,
+    private smsRetriever: SmsRetriever
   ) {
     this.isLoading = false;
   }
@@ -30,6 +32,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
       this.places = places;
       this.relevantPlaces = places;
     });
+    this.getSMS();
   }
 
   ionViewWillEnter() {
@@ -51,6 +54,20 @@ export class DiscoverPage implements OnInit, OnDestroy {
         place => place.userId !== this.authService.userId
       );
     }
+  }
+
+  getSMS() {
+    this.smsRetriever.getAppHash()
+      .then((res: any) => {
+        console.log(res);
+      })
+      .catch((error: any) => console.error(error));
+    this.smsRetriever.startWatching()
+      .then((res: any) => {
+        window.alert(res);
+        console.log(res);
+      })
+      .catch((error: any) => console.error(error));
   }
   ngOnDestroy() {
     if (this.placeSub) {
