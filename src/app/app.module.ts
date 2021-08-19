@@ -8,11 +8,12 @@ import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { ArchwizardModule } from 'angular-archwizard';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [ArchwizardModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     BarcodeScanner,
     SmsRetriever,

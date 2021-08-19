@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>stepper</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3" class="ion-text-center">
+        <aw-wizard>
+          <aw-wizard-step stepTitle="step 1">
+            Content of Step 1
+
+            <ion-button size="small" expand="block" awNextStep>next</ion-button>
+            <ion-button size="small" expand="block" [awGoToStep]="{stepIndex: 2}">Go directly to third Step</ion-button>
+          </aw-wizard-step>
+          <aw-wizard-step stepTitle="Title of step 2">
+            Content of Step 2
+            <ion-button size="small" expand="block" type="button" awPreviousStep>Go to previous step</ion-button>
+            <ion-button size="small" expand="block" type="button" awNextStep>Go to next step</ion-button>
+          </aw-wizard-step>
+          <aw-wizard-step stepTitle="Title of step 3">
+            Content of Step 3
+            <ion-button size="small" expand="block" type="button" awPreviousStep>Previous Step</ion-button>
+            <ion-button size="small" expand="block" type="button">Finish</ion-button>
+          </aw-wizard-step>
+        </aw-wizard>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

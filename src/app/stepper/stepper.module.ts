@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BookingsPageRoutingModule } from './bookings-routing.module';
+import { StepperPageRoutingModule } from './stepper-routing.module';
 
-import { BookingsPage } from './bookings.page';
+import { StepperPage } from './stepper.page';
 import { ArchwizardModule } from 'angular-archwizard';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { ArchwizardModule } from 'angular-archwizard';
     CommonModule,
     FormsModule,
     IonicModule,
-    BookingsPageRoutingModule
+    StepperPageRoutingModule
   ],
-  declarations: [BookingsPage]
+  declarations: [StepperPage]
 })
-export class BookingsPageModule {}
+export class StepperPageModule {}
