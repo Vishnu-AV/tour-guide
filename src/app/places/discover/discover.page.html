@@ -13,7 +13,20 @@
     <ion-segment-button value="all">All places</ion-segment-button>
     <ion-segment-button value="bookable">Bookable places</ion-segment-button>
   </ion-segment>
-  <ion-button (click)="getSMS()">recieve sms</ion-button>
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="retriveSMS()">
+        Read OTP from SMS
+      </ion-button>
+
+      <ion-button (click)="genHash()">
+        Gen Hash
+      </ion-button>
+
+      <p>{{hash}}</p>
+      <p>{{sms}}</p>
+    </ion-col>
+  </ion-row>>
   <ion-grid *ngIf="isLoading">
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
