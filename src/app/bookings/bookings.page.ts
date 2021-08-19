@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonItemSliding, LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 import { Booking } from './booking.model';
 import { BookingService } from './booking.service';
 
@@ -19,7 +21,8 @@ export class BookingsPage implements OnInit, OnDestroy {
     private bookingService: BookingService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
-    private router: Router
+    private router: Router,
+    private barcodeScanner: BarcodeScanner
   ) { }
 
   ngOnInit() {
@@ -32,7 +35,7 @@ export class BookingsPage implements OnInit, OnDestroy {
     this.isLoading = true;
     this.bookingService.fetchBookings().subscribe(() => {
       this.isLoading = false;
-    },    err => {
+    }, err => {
       this.alertCtrl.
         create({
           header: 'An error occured!',
@@ -61,6 +64,14 @@ export class BookingsPage implements OnInit, OnDestroy {
 
   selectChange(e) {
     console.log(e);
+  }
+
+  onScan() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+    }).catch(err => {
+      console.log('Error', err);
+    });
   }
 
   ngOnDestroy() {

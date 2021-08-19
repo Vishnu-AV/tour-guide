@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import { MenuController } from '@ionic/angular';
 import { SegmentChangeEventDetail } from '@ionic/core';
 import { Subscription } from 'rxjs';
@@ -15,14 +16,18 @@ export class DiscoverPage implements OnInit, OnDestroy {
   places: Place[];
   isLoading: boolean;
   relevantPlaces: Place[];
+  hash: any;
+  sms: any;
   private placeSub: Subscription;
 
   constructor(
     private placesService: PlacesService,
     private menuCtrl: MenuController,
-    private authService: AuthService
+    private authService: AuthService,
+    private smsRetriever: SmsRetriever
   ) {
     this.isLoading = false;
+    this.sms = 'Not recieved yet';
   }
 
   ngOnInit() {
@@ -30,6 +35,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
       this.places = places;
       this.relevantPlaces = places;
     });
+    this.genHash();
   }
 
   ionViewWillEnter() {
@@ -56,5 +62,32 @@ export class DiscoverPage implements OnInit, OnDestroy {
     if (this.placeSub) {
       this.placeSub.unsubscribe();
     }
+  }
+  genHash() {
+    // This function is to get hash string of APP.
+    // * @return {Promise<string>} Returns a promise that resolves when successfully generate hash of APP.
+    this.smsRetriever.getAppHash()
+      .then((res: any) => {
+        console.log(res);
+        alert(res);
+        this.hash = res;
+        console.log('retrieve started');
+        this.retriveSMS();
+      })
+      .catch((error: any) => console.error(error));
+  }
+
+
+  retriveSMS() {
+    console.log('Watching SMS');
+    this.smsRetriever.startWatching()
+      .then((res: any) => {
+        console.log(res);
+        this.sms = res.Message;
+        //  <#> 323741 is your 6 digit OTP for MyApp. LDQEGVDEvcl
+        const otp = res.Message.toString().substr(4, 6);
+        alert(`OTP Received - ${otp}`);
+      })
+      .catch((error: any) => console.error(error));
   }
 }
