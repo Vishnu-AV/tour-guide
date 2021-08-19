@@ -9,10 +9,17 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+
+
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, NgWizardModule.forRoot(ngWizardConfig)],
   providers: [
     BarcodeScanner,
     SmsRetriever,
