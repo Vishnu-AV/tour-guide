@@ -1,0 +1,104 @@
+/* style for linear progressbar - start*/
+$fontWeight: 50;
+
+.progress-bar{
+  // background: var(--ion-color-bottom-background);
+  padding: 4px;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.progress-bar-determinate {
+  border-radius: 50px;
+  background: var(--ion-color-bottom-background);
+  height: 5px;
+  --buffer-background: var(--ion-color-bottom-background);
+  --progress-background: var(--ion-color-progress-bar-buffer);
+}
+
+.image-centered {
+  align-self: center;
+}
+.item-img {
+  margin: 0;
+  width: 35px;
+  height: 25px;
+  padding-right: 10px;
+  display: inline-block;
+}
+
+.right-col {
+  display: flex;
+  align-items: center;
+}
+
+strong{
+  width: 100%;
+  font-size: 12px;
+  text-align: right;
+}
+
+small{
+  font-weight: $fontWeight;
+  font-size: 12px;
+}
+
+.item-name {
+  height: 100%;
+  display: flex;
+  // font-weight: bold;
+  align-items: center;
+}
+
+span{
+  font-weight: $fontWeight;
+  font-size: 12px;
+}
+
+/* style- linear progressbar end*/
+
+/* Style for circular progressbar start*/
+.outer-round {
+  height: 250px;
+  width: 250px;
+  padding: 30px;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid #e0d6d6;
+  background: var(--ion-color-round-background);
+  .inner-round {
+      width: 190px;
+      height: 190px;
+      position: absolute;
+      border-radius: 50%;
+      color: var(--ion-color-primary-contrast);
+      background: var(--ion-color-inner-round-background);
+      background: var(--ion-color-round-gradient);
+      box-shadow: 0px 0px 0px 15px var(--ion-color-round-box-shadow);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .text {
+          width: 100%;
+          display: block;
+          color: #ffffff;
+          text-align: center;
+          &.value {
+              height: 52%;
+              font-size: 35px;
+              align-items: center;
+              display: inline-flex;
+              justify-content: center;
+          }
+          &.label {
+              font-size: 14px;
+              font-weight: normal;
+              text-align: center;
+          }
+      }
+  }
+}
+
+/* style for circular progressbar end*/

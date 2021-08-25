@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+      <!-- <ion-button (click)="onOpenMenu()"> open</ion-button> -->
+    </ion-buttons>
+    <ion-title>progressbar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="outer-round">
+          <div class="inner-round">
+            <span class="value text">Test</span>
+            <span class="label text">Hi</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-row>
+          <ion-col size="2" class="image-centered">
+            <!-- <ion-img class="item-img" [src]="iconUrl"></ion-img> -->
+          </ion-col>
+          <ion-col size="5">
+            <span class="item-name q-text">name</span>
+          </ion-col>
+          <ion-col size="5" class="right-col">
+            <strong>
+              <p class="q-text"><b>10 ton</b>&nbsp;
+                <small>co2</small>
+              </p>
+            </strong>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <div class="progress-bar">
+              <ion-progress-bar [value]=".5"></ion-progress-bar>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

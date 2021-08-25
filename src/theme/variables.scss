@@ -200,10 +200,11 @@
 
     --ion-color-primary: #6824d6;
     --ion-color-secondary: #2e8585;
-    --ion-background-color: #121212;
+    // --ion-background-color: #121212;
+    --ion-background-color: #fff;
     --ion-background-color-rgb: 18,18,18;
 
-    --ion-text-color: #ffffff;
+    --ion-text-color: #000;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-border-color: #222222;
@@ -235,5 +236,18 @@
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
+
+    // for linear progressbar
+    --ion-color-bottom-background: #f7f7f7;
+    // --ion-color-progress-bar-buffer: linear-gradient(90deg, var(--ion-color-secondary, #dbed8b) 10%, var(--ion-color-primary, #6ad069) 100%);
+    --ion-color-progress-bar-buffer: linear-gradient(0.29turn, white, rgb(24, 141, 76));
+
+    // for rounde progressbar
+    --ion-color-round-background: #ffffff;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-inner-round-background: rgb(0, 0, 0);
+    --ion-color-round-gradient: transparent linear-gradient(152deg, #747474 0%, #4e4a4b 100%) 0% 0% no-repeat padding-box;
+    --ion-color-round-box-shadow: #f0efef;
   }
 }

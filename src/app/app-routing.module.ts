@@ -29,6 +29,10 @@ const routes: Routes = [
   },  {
     path: 'stepper',
     loadChildren: () => import('./stepper/stepper.module').then( m => m.StepperPageModule)
+  },
+  {
+    path: 'progressbar',
+    loadChildren: () => import('./progressbar/progressbar.module').then( m => m.ProgressbarPageModule)
   }
 
 ];
